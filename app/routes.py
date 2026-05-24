@@ -8,7 +8,7 @@ def index():
     busqueda = request.args.get('busqueda', '')
 
     conn = get_connection()
-    cursor = conn.cursor
+    cursor = conn.cursor()
 
     if busqueda:
 
@@ -48,7 +48,7 @@ def contactanos():
 @app.route('/agregar/<int:producto_id>')
 def agregar_carrito(producto_id):
     conn = get_connection()
-    cursor = conn.cursor
+    cursor = conn.cursor()
 
     cursor.execute("SELECT id, nombre, precioActual, imagen FROM sistemas WHERE id = %s", (producto_id,))
     producto = cursor.fetchone()
@@ -142,7 +142,7 @@ def logIn():
         contrasena = request.form['contrasena']
 
         conn = get_connection()
-        cursor = conn.cursor
+        cursor = conn.cursor()
 
         query = """
             SELECT id, nombre
