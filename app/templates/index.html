@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Windows</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <a href="{{ url_for('index') }}">
+            <img class="header__logo" src="{{ url_for('static', filename='logo.png') }}" alt="Logotipo">
+        </a>
+
+        <form class="buscador" method="GET" action="{{ url_for('index') }}">
+
+            <input type="text" name="busqueda" placeholder="Buscar producto..." value="{{ busqueda }}">
+
+            <button type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+        </form>
+
+        <nav class="navegacion">
+
+            <a class="navegacion__enlace navegacion__enlace--activo" href="{{ url_for('index') }}">Tienda</a>
+            <a class="navegacion__enlace navegacion__enlace" href="{{ url_for('nosotros') }}">Nosotros</a>
+            <a class="navegacion__enlace navegacion__enlace" href="{{ url_for('contactanos') }}">Contacto</a>
+            <p>|</p>
+            {% if 'usuario' in session %}
+
+            <a class="navegacion__enlace" href="{{ url_for('logout') }}">
+
+                <i class='bx bx-log-out'></i>
+
+
+            </a>
+
+            {% else %}
+
+            <a class="navegacion__enlace" href="{{ url_for('logIn') }}">
+
+                <i class='bx bx-user'></i>
+
+
+            </a>
+
+            {% endif %}
+            <a class="navegacion__enlace" href="{{ url_for('ver_carrito') }}">
+                <i class='bx bx-cart'></i>
+            </a>
+        </nav>
+    </header>
+
+    <main class="contenedor">
+        <h1> NUESTROS PRODUCTOS </h1>
+        <div class="grid">
+
+            {% for producto in productos %}
+            <div class="producto">
+                <a>
+                    <img class="producto__imagen" src="{{ url_for('static', filename=producto.imagen) }}"
+                        alt="Imagen de {{ producto.nombre }}">
+                    <div class="producto__informacion">
+                        <p class="producto__nombre">{{ producto.nombre}}</p>
+                        <p class="producto__precio">${{ producto.precioActual }}</p>
+                        <a href="{{ url_for('agregar_carrito', producto_id=producto.id) }}" class="btn-agregar">
+                            AGREGAR AL CARRITO
+                        </a>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+
+            <div class="grafico grafico--camisas"></div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <p class="footer__texto"> © SYSTEM1% - Todos los derechos reservados 2026</p>
+    </footer>
+
+</body>
+
+</html>

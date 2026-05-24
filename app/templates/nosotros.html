@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System 1% - Sistemas Operativos</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <a href="{{ url_for('index') }}">
+            <img class="header__logo" src="{{ url_for('static', filename='logo.png') }}" alt="Logotipo">
+        </a>
+        <nav class="navegacion">
+
+            <a class="navegacion__enlace navegacion__enlace" href="{{ url_for('index') }}">Tienda</a>
+            <a class="navegacion__enlace navegacion__enlace--activo" href="{{ url_for('nosotros') }}">Nosotros</a>
+            <a class="navegacion__enlace navegacion__enlace" href="{{ url_for('contactanos') }}">Contacto</a>
+            <p>|</p>
+            {% if 'usuario' in session %}
+
+            <a class="navegacion__enlace" href="{{ url_for('logout') }}">
+
+                <i class='bx bx-log-out'></i>
+
+
+            </a>
+
+            {% else %}
+
+            <a class="navegacion__enlace" href="{{ url_for('logIn') }}">
+
+                <i class='bx bx-user'></i>
+
+
+            </a>
+
+            {% endif %}
+            <a class="navegacion__enlace" href="{{ url_for('ver_carrito') }}">
+                <i class='bx bx-cart'></i>
+            </a>
+        </nav>
+    </header>
+
+    <main class="contenedor">
+        <h2>Sobre Nosotros</h2>
+        <div class="nosotros">
+            <p>
+                Bienvenidos a <strong>System 1%</strong>, tu plataforma de confianza para la adquisición de sistemas
+                operativos.
+                Somos un equipo apasionado por la tecnología, el software y la innovación, dedicados a ofrecer
+                soluciones
+                digitales eficientes y seguras para usuarios domésticos, empresas y entusiastas del código.
+
+            </p>
+        </div>
+        <img class="nosotros__image" src="{{ url_for('static', filename='nosotros.jpg') }}" alt="Equipo System 1%"
+            style="display: block; margin:  auto; width: 500px;">
+    </main>
+
+    <section class="contenedor">
+        <h2 style="margin-top: 30px;">¿Por qué comprar con nosotros?</h2>
+        <div class="informacion">
+            <div class="informacion__bloque">
+                <img class="tamano" src="{{ url_for('static', filename='icono_1.png') }}" alt="Mejor precio">
+                <h3>El mejor precio</h3>
+                <p>Ofrecemos los precios más competitivos del mercado en licencias y sistemas operativos, asegurándonos
+                    de que obtengas el mejor valor por tu dinero.</p>
+            </div>
+
+            <div class="informacion__bloque">
+                <img class="tamano" src="{{ url_for('static', filename='icono_2.png') }}" alt="Para profesionales">
+                <h3>Para profesionales</h3>
+                <p>Diseñado pensando en desarrolladores, administradores y entusiastas IT. Nuestros sistemas operativos
+                    están optimizados para el sector tecnológico.</p>
+            </div>
+
+            <div class="informacion__bloque">
+                <img class="tamano" src="{{ url_for('static', filename='icono_3.png') }}" alt="Envío digital">
+                <h3>Entrega inmediata</h3>
+                <p>Recibe tu licencia y enlaces de descarga al instante después de la compra. Sin esperas, sin
+                    complicaciones.</p>
+            </div>
+
+            <div class="informacion__bloque">
+                <img class="tamano" src="{{ url_for('static', filename='icono_4.png') }}" alt="Soporte técnico">
+                <h3>Soporte 24/7</h3>
+                <p>Te acompañamos en la instalación y configuración. Nuestro equipo técnico está disponible para
+                    resolver todas tus dudas.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p class="footer__texto">© System 1% - Todos los derechos reservados 2026</p>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contáctanos</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+
+    <header class="header">
+
+        <a href="{{ url_for('index') }}">
+            <img class="header__logo" src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+        </a>
+
+        <nav class="navegacion">
+
+            <a class="navegacion__enlace navegacion__enlace" href="{{ url_for('index') }}">Tienda</a>
+            <a class="navegacion__enlace navegacion__enlace" href="{{ url_for('nosotros') }}">Nosotros</a>
+            <a class="navegacion__enlace navegacion__enlace--activo" href="{{ url_for('contactanos') }}">Contacto</a>
+            <p>|</p>
+            {% if 'usuario' in session %}
+
+            <a class="navegacion__enlace" href="{{ url_for('logout') }}">
+
+                <i class='bx bx-log-out'></i>
+
+
+            </a>
+
+            {% else %}
+
+            <a class="navegacion__enlace" href="{{ url_for('logIn') }}">
+
+                <i class='bx bx-user'></i>
+
+
+            </a>
+
+            {% endif %}
+            <a class="navegacion__enlace" href="{{ url_for('ver_carrito') }}">
+                <i class='bx bx-cart'></i>
+            </a>
+        </nav>
+
+    </header>
+
+    <main class="contenedor contacto">
+
+        <h1>CONTÁCTANOS</h1>
+
+        <p class="contacto__texto">
+            ¿Tienes dudas sobre nuestros sistemas, instalaciones
+            o soporte técnico? Ponte en contacto con nosotros.
+        </p>
+
+        <div class="contacto__contenedor">
+
+            <div class="contacto__info">
+
+                <div class="contacto__item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <p>system@gmail.com</p>
+                </div>
+
+                <div class="contacto__item">
+                    <i class="fa-solid fa-phone"></i>
+                    <p>+52 999 999 9999</p>
+                </div>
+
+                <div class="contacto__item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p>México</p>
+                </div>
+
+            </div>
+
+            <form class="contacto__formulario">
+
+                <div class="campo">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" placeholder="Nombre completo" required>
+                </div>
+
+                <div class="campo">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" placeholder="Correo electrónico" required>
+                </div>
+
+                <div class="campo">
+
+                    <textarea name="mensaje" placeholder="Escribe tu mensaje..." required></textarea>
+                </div>
+
+                <button type="submit">
+                    Enviar mensaje
+                </button>
+
+            </form>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p class="footer__texto">
+            © SYSTEM1% - Todos los derechos reservados 2026
+        </p>
+    </footer>
+
+</body>
+
+</html>
