@@ -2,6 +2,13 @@ from app import app
 from app.db import get_connection
 from flask import render_template, request, redirect, url_for, session, flash
 
+@app.context_processor
+def inyectar_cantidad_carrito():
+    cantidad = 0
+    if 'carrito' in session:
+        cantidad = len(session['carrito'])
+    return dict(cantidad_carrito=cantidad)
+
 @app.route('/', methods=['GET'])
 def index():
 

@@ -58,8 +58,12 @@
             </a>
 
             {% endif %}
-            <a class="navegacion__enlace" href="{{ url_for('ver_carrito') }}">
+            <a class="navegacion__enlace contenedor-icono-carrito" href="{{ url_for('ver_carrito') }}">
                 <i class='bx bx-cart'></i>
+
+                {% if cantidad_carrito and cantidad_carrito > 0 %}
+                <span class="contador-carrito">{{ cantidad_carrito }}</span>
+                {% endif %}
             </a>
         </nav>
     </header>
