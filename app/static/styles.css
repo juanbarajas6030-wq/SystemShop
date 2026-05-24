@@ -1,5 +1,5 @@
 :root {
-    --font-family: "Bebas neue black", sans-serif;
+    --font-family: "Bebas Neue", sans-serif;
     --primario2: #1d1d1d;
     --primario: #2f2f2f;
     --secundario: #00d2d2;
@@ -48,14 +48,14 @@
 
 /* Buscador */
 
-.buscador{
+.buscador {
     display: flex;
     justify-content: center;
 
     gap: 10px;
 }
 
-.buscador input{
+.buscador input {
     width: 400px;
     padding: 12px;
     border-radius: 30px;
@@ -63,7 +63,7 @@
     font-size: 16px;
 }
 
-.buscador button{
+.buscador button {
     background: transparent;
     border: 2px solid white;
     width: 50px;
@@ -73,7 +73,7 @@
     font-size: 20px;
 }
 
-.buscador button:hover{
+.buscador button:hover {
     background: var(--secundario);
 }
 
@@ -135,7 +135,7 @@ h3 {
     text-transform: uppercase;
     text-align: center;
     font-family: var(--font-family);
-    
+
 }
 
 h1 {
@@ -155,7 +155,8 @@ h3 {
     display: flex;
     align-items: center;
     color: white;
-    font-family: "Montserrat Black", sans-serif;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
     gap: 30px;
     margin-bottom: 20px;
     font-size: 20px;
@@ -163,7 +164,8 @@ h3 {
 
 .total {
     color: white;
-    font-family: "Montserrat Black", sans-serif;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
 }
 
 li {
@@ -176,7 +178,7 @@ li {
 }
 
 .campo input {
-    font-family: 'Poppins';
+    font-family: "Poppins", sans-serif;
     width: 100%;
     background: rgba(255, 255, 255, 0.1);
     border: none;
@@ -220,7 +222,7 @@ li {
     text-align: center;
     margin-bottom: 15px;
 
-    font-family: "Poppins";
+    font-family: "Poppins", sans-serif;
     width: 100%;
     padding: 10px;
     background: #00cccc;
@@ -293,7 +295,7 @@ button,
 
 .producto__informacion {
     color: white;
-    font-size: 'Poppins';
+    font-family: 'Poppins', sans-serif;
 }
 
 .producto__nombre {
@@ -351,13 +353,6 @@ button,
 
 }
 
-@media (min-width: 769px) {
-    .nosotros {
-        display: flex;
-        gap: 2rem;
-        /* Separacion Forma Nueva */
-    }
-}
 
 /* Efecto hover en los bloques de información */
 .informacion__bloque {
@@ -387,57 +382,57 @@ button,
 
 /* CONTACTO */
 
-.contacto{
+.contacto {
     padding: 3rem 0;
 }
 
-.contacto__texto{
+.contacto__texto {
     text-align: center;
     margin: 20px auto;
     max-width: 700px;
 }
 
-.contacto__contenedor{
+.contacto__contenedor {
     display: grid;
     gap: 40px;
     margin-top: 40px;
 }
 
-@media(min-width: 768px){
-    .contacto__contenedor{
+@media(min-width: 768px) {
+    .contacto__contenedor {
         grid-template-columns: 1fr 2fr;
     }
 }
 
-.contacto__info{
+.contacto__info {
     background: var(--primario2);
     padding: 30px;
     border-radius: 20px;
 }
 
-.contacto__item{
+.contacto__item {
     display: flex;
     align-items: center;
     gap: 15px;
     margin-bottom: 25px;
 }
 
-.contacto__item i{
+.contacto__item i {
     color: var(--secundario);
     font-size: 24px;
 }
 
-.contacto__formulario{
+.contacto__formulario {
     background: var(--primario2);
     padding: 30px;
     border-radius: 20px;
 }
 
-.contacto__formulario textarea{
+.contacto__formulario textarea {
     width: 100%;
     min-height: 180px;
 
-    background: rgba(255,255,255,.1);
+    background: rgba(255, 255, 255, .1);
     border: none;
     border-radius: 20px;
 
@@ -445,10 +440,10 @@ button,
     color: white;
     resize: none;
 
-    font-family: 'Poppins';
+    font-family: "Poppins", sans-serif;
 }
 
-.contacto__formulario textarea::placeholder{
+.contacto__formulario textarea::placeholder {
     color: rgba(255, 255, 255, 0.7);
 }
 
@@ -484,7 +479,7 @@ button,
 }
 
 .btn-vaciar:hover {
-    background-color: #00fff2;
+    background-color: #049797;
 }
 
 .form-vaciar {

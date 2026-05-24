@@ -5,15 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>System Windows</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@900&family=Poppins:wght@400;500;600&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -69,17 +70,20 @@
 
             {% for producto in productos %}
             <div class="producto">
-                <a>
-                    <img class="producto__imagen" src="{{ url_for('static', filename=producto.imagen) }}"
+                <a href="#"> <img class="producto__imagen" src="{{ url_for('static', filename=producto.imagen) }}"
                         alt="Imagen de {{ producto.nombre }}">
-                    <div class="producto__informacion">
-                        <p class="producto__nombre">{{ producto.nombre}}</p>
-                        <p class="producto__precio">${{ producto.precioActual }}</p>
-                        <a href="{{ url_for('agregar_carrito', producto_id=producto.id) }}" class="btn-agregar">
-                            AGREGAR AL CARRITO
-                        </a>
-                    </div>
                 </a>
+
+                <div class="producto__informacion">
+                    <a href="#">
+                        <p class="producto__nombre">{{ producto.nombre }}</p>
+                    </a>
+                    <p class="producto__precio">${{ producto.precioActual }}</p>
+
+                    <a href="{{ url_for('agregar_carrito', producto_id=producto.id) }}" class="btn-agregar">
+                        AGREGAR AL CARRITO
+                    </a>
+                </div>
             </div>
             {% endfor %}
 

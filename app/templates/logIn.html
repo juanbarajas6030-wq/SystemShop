@@ -6,29 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesion</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@900&family=Poppins:wght@400;500;600&display=swap"
+        rel="stylesheet">
 </head>
 
-<body >
+<body>
 
     <header class="header">
         <a href="{{ url_for('index') }}">
-            <img class="header__logo"
-                 src="{{ url_for('static', filename='logo.png') }}"
-                 alt="Logotipo">
+            <img class="header__logo" src="{{ url_for('static', filename='logo.png') }}" alt="Logotipo">
         </a>
         <nav>
             <nav class="navegacion">
 
-            <a class="navegacion__enlace navegacion__enlace" href="{{ url_for('index') }}">Tienda</a>
-            <a class="navegacion__enlace navegacion__enlace" href="{{ url_for('nosotros') }}">Nosotros</a>
-            <a class="navegacion__enlace navegacion__enlace" href="{{ url_for('contactanos') }}">Contacto</a>
-            <p>|</p>
-            <a class="navegacion__enlace--activo" href="{{ url_for('logIn') }}">
-                <i class="bx bx-user"></i>
-            </a>
-        </nav>
+                <a class="navegacion__enlace navegacion__enlace" href="{{ url_for('index') }}">Tienda</a>
+                <a class="navegacion__enlace navegacion__enlace" href="{{ url_for('nosotros') }}">Nosotros</a>
+                <a class="navegacion__enlace navegacion__enlace" href="{{ url_for('contactanos') }}">Contacto</a>
+                <p>|</p>
+                <a class="navegacion__enlace--activo" href="{{ url_for('logIn') }}">
+                    <i class="bx bx-user"></i>
+                </a>
+            </nav>
     </header>
 
     <main>
@@ -41,19 +45,13 @@
                 <div class="campo">
                     <i class='bx bx-envelope'></i>
 
-                    <input type="email"
-                           placeholder="Email"
-                           name="email"
-                           required>
+                    <input type="email" placeholder="Email" name="email" required>
                 </div>
 
                 <div class="campo">
                     <i class='bx bxs-lock-alt'></i>
 
-                    <input type="password"
-                           placeholder="Password"
-                           name="contrasena"
-                           required>
+                    <input type="password" placeholder="Password" name="contrasena" required>
                 </div>
 
                 <button type="submit">
