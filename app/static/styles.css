@@ -37,12 +37,14 @@ img {
 }
 
 .contenedor {
-    max-width: 1200px; /* Ampliado a 1200px para aprovechar mejor las laptops */
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px; /* Evita que el contenido toque los bordes */
+    padding: 0 20px;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     color: white;
     font-weight: normal;
     text-transform: uppercase;
@@ -51,13 +53,19 @@ h1, h2, h3 {
     margin: 20px 0;
 }
 
-h1 { font-size: 37px; }
-h2 { font-size: 32px; }
-h3 { font-size: 24px; }
+h1 {
+    font-size: 37px;
+}
 
-/* =======================================
-   HEADER Y NAVEGACIÓN (Base Laptop)
-   ======================================= */
+h2 {
+    font-size: 32px;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+/* Barra de NAV */
 .header {
     display: flex;
     justify-content: space-between;
@@ -120,12 +128,11 @@ h3 { font-size: 24px; }
     background: var(--secundario);
 }
 
-/* =======================================
-   GRID DE PRODUCTOS (Base Laptop: 3 columnas)
-   ======================================= */
+/* PRODUCTOS */
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    /* 3 columnas en Laptop */
     gap: 20px;
     margin-bottom: 40px;
 }
@@ -138,7 +145,7 @@ h3 { font-size: 24px; }
 }
 
 .producto:hover {
-    transform: translateY(-5px); /* Pequeño efecto 3D en laptop */
+    transform: translateY(-5px);
 }
 
 .producto__imagen {
@@ -166,10 +173,24 @@ h3 { font-size: 24px; }
     text-align: center;
 }
 
-/* =======================================
-   BOTONES E INPUTS GENERALES
-   ======================================= */
-.btn-agregar, button {
+/* BANNER Pyhton Imagen */
+.grafico {
+    min-height: 500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+
+    grid-column: span 2;
+}
+
+.grafico--sistemas {
+    background-image: url('python.jpeg');
+}
+
+/* BOTONES */
+.btn-agregar,
+button {
     display: block;
     width: 100%;
     padding: 12px;
@@ -185,13 +206,12 @@ h3 { font-size: 24px; }
     transition: background 0.3s;
 }
 
-.btn-agregar:hover, button:hover {
+.btn-agregar:hover,
+button:hover {
     background: #009d9d;
 }
 
-/* =======================================
-   PÁGINA: NOSOTROS (Base Laptop)
-   ======================================= */
+/* NOSOTROS */
 .nosotros {
     display: flex;
     gap: 2rem;
@@ -228,9 +248,7 @@ h3 { font-size: 24px; }
     margin-bottom: 15px;
 }
 
-/* =======================================
-   PÁGINA: CONTACTO (Base Laptop)
-   ======================================= */
+/* CONTACTO */
 .contacto {
     padding: 3rem 0;
 }
@@ -248,7 +266,8 @@ h3 { font-size: 24px; }
     margin-top: 40px;
 }
 
-.contacto__info, .contacto__formulario {
+.contacto__info,
+.contacto__formulario {
     background: var(--primario2);
     padding: 30px;
     border-radius: 20px;
@@ -282,9 +301,7 @@ h3 { font-size: 24px; }
     color: rgba(255, 255, 255, 0.7);
 }
 
-/* =======================================
-   CARRITO DE COMPRAS Y LOGIN
-   ======================================= */
+/* CARRITO DE COMPRAS */
 .contenedor-icono-carrito {
     position: relative;
     display: inline-block;
@@ -324,7 +341,9 @@ h3 { font-size: 24px; }
     font-weight: 900;
 }
 
-li { list-style-type: none; }
+li {
+    list-style-type: none;
+}
 
 .carrito-acciones {
     display: flex;
@@ -362,13 +381,17 @@ li { list-style-type: none; }
 .btn-eliminar {
     color: #ff4d4d;
     font-size: 24px;
-    margin-left: auto; /* Empuja el basurero a la derecha */
+    margin-left: auto;
+    /* Empuja el basurero a la derecha */
     transition: 0.3s;
 }
 
-.btn-eliminar:hover { color: #ff1a1a; transform: scale(1.1); }
+.btn-eliminar:hover {
+    color: #ff1a1a;
+    transform: scale(1.1);
+}
 
-/* Campos de Formulario (Login/Registro/Checkout) */
+/* LOGIN */
 .contenedorLogIn {
     background: rgba(120, 120, 120, 0.150);
     border: 3px solid rgba(255, 255, 255, 0.3);
@@ -401,8 +424,14 @@ li { list-style-type: none; }
     font-weight: 600;
 }
 
-.campo input::placeholder { color: rgba(255, 255, 255, 0.8); }
-.campo input:focus { outline: 3px solid rgba(255, 255, 255, 0.3); }
+.campo input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.campo input:focus {
+    outline: 3px solid rgba(255, 255, 255, 0.3);
+}
+
 .campo i {
     position: absolute;
     left: 17px;
@@ -413,18 +442,7 @@ li { list-style-type: none; }
     pointer-events: none;
 }
 
-/* Gráfico / Banner */
-.grafico {
-    min-height: 500px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    grid-column: 1 / -1; /* Ocupa todo el ancho en cualquier pantalla */
-    border-radius: 20px;
-    margin-top: 20px;
-}
 
-.grafico--sistemas { background-image: url('python.jpeg'); }
 
 /* Footer */
 .footer {
@@ -433,32 +451,35 @@ li { list-style-type: none; }
     padding: 20px 0;
     margin-top: 40px;
 }
+
 .footer__texto {
     text-align: center;
     font-size: 22px;
     font-family: var(--font-family);
 }
 
+/* RESPONSIVE */
+
 /* TABLETS Y PANTALLAS MEDIANAS (Hasta 992px) */
 @media (max-width: 992px) {
-    .grid { grid-template-columns: repeat(2, 1fr); } /* De 3 a 2 productos por fila */
-    .informacion { grid-template-columns: repeat(2, 1fr); } /* De 4 a 2 bloques informativos */
+    .grid { grid-template-columns: repeat(2, 1fr); } /* Pasa a 2 columnas */
+    .informacion { grid-template-columns: repeat(2, 1fr); }
+    
+    /* En tablet de 2 columnas, hacemos que el gráfico ocupe todo el ancho de la fila */
+    .grafico { grid-column: 1 / -1; } 
 }
 
 /* DISPOSITIVOS MÓVILES GRANDES (Hasta 768px) */
 @media (max-width: 768px) {
-    /* Header apilado */
     .header { flex-direction: column; gap: 15px; padding: 20px; }
     .buscador { width: 100%; }
     .buscador input { width: 100%; }
     .navegacion { flex-wrap: wrap; justify-content: center; }
 
-    /* Secciones de nosotros y contacto apiladas */
     .nosotros { flex-direction: column; text-align: center; }
-    .contacto__contenedor { grid-template-columns: 1fr; } /* De 2 columnas a 1 */
+    .contacto__contenedor { grid-template-columns: 1fr; }
 
-    /* Carrito ajustado para tablet/móvil */
-    .text { flex-direction: column; text-align: center; gap: 15px; } /* Imagen, texto y basura se apilan */
+    .text { flex-direction: column; text-align: center; gap: 15px; }
     .btn-eliminar { margin-left: 0; margin-top: 10px; }
     
     .carrito-acciones { flex-direction: column; gap: 20px; text-align: center; }
@@ -467,12 +488,14 @@ li { list-style-type: none; }
 
 /* CELULARES PEQUEÑOS (Hasta 480px) */
 @media (max-width: 480px) {
-    .grid { grid-template-columns: 1fr; } /* 1 solo producto grande por fila */
-    .informacion { grid-template-columns: 1fr; } /* 1 solo bloque informativo a la vez */
+    .grid { grid-template-columns: 1fr; } /* 1 sola columna */
+    .informacion { grid-template-columns: 1fr; }
+    
+    /* En celular de 1 columna, el gráfico se adapta de forma natural */
+    .grafico { grid-column: 1 / -1; min-height: 350px; } /* Reducimos un poco la altura en celulares para que no scroleen tanto */
     
     .producto__nombre { font-size: 32px; }
-    
-    .contenedorLogIn { width: 90%; padding: 20px; } /* El login deja de tener 400px fijos */
+    .contenedorLogIn { width: 90%; padding: 20px; }
     
     h1 { font-size: 30px; }
     h2 { font-size: 26px; }
