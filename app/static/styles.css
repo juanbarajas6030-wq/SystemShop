@@ -9,78 +9,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box
-}
-
-/* Header */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 40px;
-    background-color: var(--primario2);
-}
-
-/* Logo */
-.header__logo {
-    width: 150px;
-    height: auto;
-}
-
-/* Navegación */
-.navegacion {
-    display: flex;
-    gap: 20px;
-}
-
-.navegacion__enlace {
-    font-family: var(--font-family);
-    color: var(--blanco);
-    font-size: 30px;
-    text-decoration: none;
-}
-
-.navegacion__enlace--activo,
-.navegacion__enlace:hover {
-    font-size: 30px;
-    color: var(--secundario);
-}
-
-/* Buscador */
-
-.buscador {
-    display: flex;
-    justify-content: center;
-
-    gap: 10px;
-}
-
-.buscador input {
-    width: 400px;
-    padding: 12px;
-    border-radius: 30px;
-    border: none;
-    font-size: 16px;
-}
-
-.buscador button {
-    background: transparent;
-    border: 2px solid white;
-    width: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    color: white;
-    font-size: 20px;
-}
-
-.buscador button:hover {
-    background: var(--secundario);
-}
-
-/* Body */
-
-main {
-    min-height: 76vh;
+    box-sizing: border-box;
 }
 
 body {
@@ -89,6 +18,9 @@ body {
     line-height: 1.5;
 }
 
+main {
+    min-height: 76vh;
+}
 
 p {
     font-size: 18px;
@@ -104,76 +36,272 @@ img {
     max-width: 100%;
 }
 
-
 .contenedor {
-    max-width: 1000px;
+    max-width: 1200px; /* Ampliado a 1200px para aprovechar mejor las laptops */
     margin: 0 auto;
-
+    padding: 0 20px; /* Evita que el contenido toque los bordes */
 }
 
-.contenedorLogIn {
-    background: rgba(120, 120, 120, 0.150);
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    padding: 30px;
-    border-radius: 16px;
-    backdrop-filter: blur(25px);
-    text-align: center;
-    color: white;
-    width: 400px;
-
-    box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.15);
-
-    margin: auto;
-    margin-top: 60px;
-}
-
-h1,
-h2,
-h3 {
+h1, h2, h3 {
     color: white;
     font-weight: normal;
     text-transform: uppercase;
     text-align: center;
     font-family: var(--font-family);
-
+    margin: 20px 0;
 }
 
-h1 {
-    font-size: 37px;
+h1 { font-size: 37px; }
+h2 { font-size: 32px; }
+h3 { font-size: 24px; }
+
+/* =======================================
+   HEADER Y NAVEGACIÓN (Base Laptop)
+   ======================================= */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: var(--primario2);
 }
 
-h2 {
-    font-size: 32px;
+.header__logo {
+    width: 150px;
+    height: auto;
 }
 
-h3 {
+.navegacion {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navegacion__enlace {
+    font-family: var(--font-family);
+    color: var(--blanco);
+    font-size: 30px;
+    transition: 0.3s;
+}
+
+.navegacion__enlace--activo,
+.navegacion__enlace:hover {
+    color: var(--secundario);
+}
+
+.buscador {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.buscador input {
+    width: 400px;
+    padding: 12px 20px;
+    border-radius: 30px;
+    border: none;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+}
+
+.buscador button {
+    background: transparent;
+    border: 2px solid white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.buscador button:hover {
+    background: var(--secundario);
+}
+
+/* =======================================
+   GRID DE PRODUCTOS (Base Laptop: 3 columnas)
+   ======================================= */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.producto {
+    background-color: var(--primario2);
+    padding: 15px;
+    border-radius: 20px;
+    transition: transform 0.3s ease;
+}
+
+.producto:hover {
+    transform: translateY(-5px); /* Pequeño efecto 3D en laptop */
+}
+
+.producto__imagen {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.producto__informacion {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.producto__nombre {
+    font-family: var(--font-family);
+    font-size: 40px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.producto__precio {
+    font-family: var(--font-family);
+    font-size: 28px;
+    color: var(--secundario);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* =======================================
+   BOTONES E INPUTS GENERALES
+   ======================================= */
+.btn-agregar, button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: #00cccc;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+.btn-agregar:hover, button:hover {
+    background: #009d9d;
+}
+
+/* =======================================
+   PÁGINA: NOSOTROS (Base Laptop)
+   ======================================= */
+.nosotros {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.nosotros strong {
+    color: var(--secundario);
+}
+
+.informacion {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.informacion__bloque {
+    background-color: var(--primario2);
+    padding: 2rem;
+    text-align: center;
+    border-radius: 16px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.informacion__bloque:hover {
+    transform: translateY(-5px);
+    background-color: rgba(0, 210, 210, 0.1);
+}
+
+.tamano {
+    scale: 120%;
+    margin-bottom: 15px;
+}
+
+/* =======================================
+   PÁGINA: CONTACTO (Base Laptop)
+   ======================================= */
+.contacto {
+    padding: 3rem 0;
+}
+
+.contacto__texto {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 700px;
+}
+
+.contacto__contenedor {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.contacto__info, .contacto__formulario {
+    background: var(--primario2);
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.contacto__item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.contacto__item i {
+    color: var(--secundario);
     font-size: 24px;
 }
 
-/* Contenedor relativo para poder anclar la burbuja */
+.contacto__formulario textarea {
+    width: 100%;
+    min-height: 180px;
+    background: rgba(255, 255, 255, .1);
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    resize: none;
+    font-family: "Poppins", sans-serif;
+}
+
+.contacto__formulario textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* =======================================
+   CARRITO DE COMPRAS Y LOGIN
+   ======================================= */
 .contenedor-icono-carrito {
     position: relative;
     display: inline-block;
 }
 
-/* Diseño de la burbuja flotante */
 .contador-carrito {
     position: absolute;
-    top: -8px; /* Lo sube un poco */
-    right: -12px; /* Lo mueve a la derecha del icono */
-    
-    background-color: var(--secundario); /* Usamos tu color cyan */
-    color: var(--primario2); /* Color oscuro para el texto (contraste) */
-    
+    top: -8px;
+    right: -12px;
+    background-color: var(--secundario);
+    color: var(--primario2);
     font-family: var(--font-family);
     font-size: 16px;
     font-weight: bold;
-    
-    /* Para que sea un círculo perfecto */
     min-width: 24px;
     height: 24px;
     border-radius: 50%;
-    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -196,8 +324,62 @@ h3 {
     font-weight: 900;
 }
 
-li {
-    list-style-type: none;
+li { list-style-type: none; }
+
+.carrito-acciones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    background: var(--primario2);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.carrito-acciones-derecha {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn-vaciar {
+    padding: 10px 20px;
+    background-color: #00ffee;
+    color: #1d1d1d;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+}
+
+.btn-vaciar:hover {
+    background-color: #049797;
+    color: white;
+}
+
+.btn-eliminar {
+    color: #ff4d4d;
+    font-size: 24px;
+    margin-left: auto; /* Empuja el basurero a la derecha */
+    transition: 0.3s;
+}
+
+.btn-eliminar:hover { color: #ff1a1a; transform: scale(1.1); }
+
+/* Campos de Formulario (Login/Registro/Checkout) */
+.contenedorLogIn {
+    background: rgba(120, 120, 120, 0.150);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    border-radius: 16px;
+    backdrop-filter: blur(25px);
+    text-align: center;
+    color: white;
+    width: 400px;
+    box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.15);
+    margin: 60px auto;
 }
 
 .campo {
@@ -217,23 +399,10 @@ li {
     font-size: 15px;
     color: white;
     font-weight: 600;
-    line-height: 30px;
 }
 
-.campo input::placeholder {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 15px;
-    font-weight: 500;
-}
-
-.campo input:focus {
-    outline: 3px solid rgba(255, 255, 255, 0.3);
-}
-
-.campo input::-ms-reveal {
-    filter: invert(100%);
-}
-
+.campo input::placeholder { color: rgba(255, 255, 255, 0.8); }
+.campo input:focus { outline: 3px solid rgba(255, 255, 255, 0.3); }
 .campo i {
     position: absolute;
     left: 17px;
@@ -242,287 +411,69 @@ li {
     color: #ffffff71;
     font-size: 18px;
     pointer-events: none;
-    /* evita que el ícono interfiera al hacer clic */
 }
 
-.btn-agregar {
-    display: block;
-    text-align: center;
-    margin-bottom: 15px;
-
-    font-family: "Poppins", sans-serif;
-    width: 100%;
-    padding: 10px;
-    background: #00cccc;
-    border-radius: 30px;
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-}
-
-
-button {
-    width: 100%;
-    padding: 10px 0;
-    background: #00cccc;
-    border: none;
-    border-radius: 99px;
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button,
-.btn-agregar:hover {
-    background: #009d9d;
-}
-
-/* FOOTER */
-.footer {
-    background-color: var(--primario2);
-    color: white;
-    padding: 10px 0;
-}
-
-.footer__texto {
-    text-align: center;
-    padding: 20px;
-    font-size: 22px;
-    font-family: var(--font-family)
-}
-
-/* GRID */
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-
-}
-
-@media (min-width: 768px) {
-    .grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-/* PRODUCTOS */
-
-.producto {
-    background-color: var(--primario2);
-    padding: 10px;
-    border-radius: 20px;
-}
-
-.producto__imagen {
-    width: 100%;
-    border-radius: 10px;
-}
-
-.producto__informacion {
-    color: white;
-    font-family: 'Poppins', sans-serif;
-}
-
-.producto__nombre {
-    font-size: 40px;
-}
-
-.producto__precio {
-    font-size: 28px;
-    color: var(--secundario);
-}
-
-.producto__nombre,
-.producto__precio {
-    font-family: var(--font-family);
-    margin: 10px 0;
-    text-align: center;
-}
-
-.registro {
-    margin-top: 15px;
-    font-size: 15px;
-}
-
-.registro a {
-    color: #48acff;
-    text-decoration: none;
-    font-weight: 700;
-}
-
-.registro a:hover {
-    text-decoration: underline;
-}
-
-/* GRAFICOS */
-
+/* Gráfico / Banner */
 .grafico {
     min-height: 500px;
-    /* más altura */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    grid-column: 1 / 3;
+    grid-column: 1 / -1; /* Ocupa todo el ancho en cualquier pantalla */
+    border-radius: 20px;
+    margin-top: 20px;
 }
 
-.grafico--sistemas {
-    grid-row: 2 / 3;
-    background-image: url('python.jpeg');
-}
+.grafico--sistemas { background-image: url('python.jpeg'); }
 
-/* NOSOTROS */
-
-.nosotros {
-    place-items: center;
-    margin: 2rem;
-
-}
-
-
-/* Efecto hover en los bloques de información */
-.informacion__bloque {
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    border-radius: 16px;
-}
-
-.informacion__bloque:hover {
-    transform: translateY(-5px);
-    background-color: rgba(0, 210, 210, 0.1);
-}
-
-
-/* Estilo para el strong dentro de nosotros */
-.nosotros strong {
-    color: var(--secundario);
-}
-
-
-@media (min-width: 769px) {
-    .nosotros {
-        display: flex;
-        gap: 2rem;
-        /* Separacion Forma Nueva */
-    }
-}
-
-/* CONTACTO */
-
-.contacto {
-    padding: 3rem 0;
-}
-
-.contacto__texto {
-    text-align: center;
-    margin: 20px auto;
-    max-width: 700px;
-}
-
-.contacto__contenedor {
-    display: grid;
-    gap: 40px;
+/* Footer */
+.footer {
+    background-color: var(--primario2);
+    color: white;
+    padding: 20px 0;
     margin-top: 40px;
 }
-
-@media(min-width: 768px) {
-    .contacto__contenedor {
-        grid-template-columns: 1fr 2fr;
-    }
-}
-
-.contacto__info {
-    background: var(--primario2);
-    padding: 30px;
-    border-radius: 20px;
-}
-
-.contacto__item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 25px;
-}
-
-.contacto__item i {
-    color: var(--secundario);
-    font-size: 24px;
-}
-
-.contacto__formulario {
-    background: var(--primario2);
-    padding: 30px;
-    border-radius: 20px;
-}
-
-.contacto__formulario textarea {
-    width: 100%;
-    min-height: 180px;
-
-    background: rgba(255, 255, 255, .1);
-    border: none;
-    border-radius: 20px;
-
-    padding: 20px;
-    color: white;
-    resize: none;
-
-    font-family: "Poppins", sans-serif;
-}
-
-.contacto__formulario textarea::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-}
-
-
-/* CONTENEDOR INFORMACION */
-@media (min-width: 768px) {
-    .informacion {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
-        padding: 2rem;
-    }
-}
-
-.informacion__bloque {
-    padding: 2rem;
+.footer__texto {
     text-align: center;
+    font-size: 22px;
+    font-family: var(--font-family);
 }
 
-.tamano {
-    scale: 120%;
+/* TABLETS Y PANTALLAS MEDIANAS (Hasta 992px) */
+@media (max-width: 992px) {
+    .grid { grid-template-columns: repeat(2, 1fr); } /* De 3 a 2 productos por fila */
+    .informacion { grid-template-columns: repeat(2, 1fr); } /* De 4 a 2 bloques informativos */
 }
 
-/* Estilos para el botón de vaciar carrito */
-.btn-vaciar {
-    padding: 10px 20px;
-    background-color: #00ffee;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
+/* DISPOSITIVOS MÓVILES GRANDES (Hasta 768px) */
+@media (max-width: 768px) {
+    /* Header apilado */
+    .header { flex-direction: column; gap: 15px; padding: 20px; }
+    .buscador { width: 100%; }
+    .buscador input { width: 100%; }
+    .navegacion { flex-wrap: wrap; justify-content: center; }
+
+    /* Secciones de nosotros y contacto apiladas */
+    .nosotros { flex-direction: column; text-align: center; }
+    .contacto__contenedor { grid-template-columns: 1fr; } /* De 2 columnas a 1 */
+
+    /* Carrito ajustado para tablet/móvil */
+    .text { flex-direction: column; text-align: center; gap: 15px; } /* Imagen, texto y basura se apilan */
+    .btn-eliminar { margin-left: 0; margin-top: 10px; }
+    
+    .carrito-acciones { flex-direction: column; gap: 20px; text-align: center; }
+    .carrito-acciones-derecha { flex-direction: column; width: 100%; }
 }
 
-.btn-vaciar:hover {
-    background-color: #049797;
-}
-
-.form-vaciar {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.carrito-acciones {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 2rem;
-}
-
-.carrito-acciones-derecha {
-    display: flex;
-    gap: 10px;
+/* CELULARES PEQUEÑOS (Hasta 480px) */
+@media (max-width: 480px) {
+    .grid { grid-template-columns: 1fr; } /* 1 solo producto grande por fila */
+    .informacion { grid-template-columns: 1fr; } /* 1 solo bloque informativo a la vez */
+    
+    .producto__nombre { font-size: 32px; }
+    
+    .contenedorLogIn { width: 90%; padding: 20px; } /* El login deja de tener 400px fijos */
+    
+    h1 { font-size: 30px; }
+    h2 { font-size: 26px; }
 }
