@@ -23,10 +23,10 @@
             <img class="header__logo" src="{{ url_for('static', filename='logo.png') }}" alt="Logotipo">
         </a>
 
-        <form class="buscador" method="GET" action="{{ url_for('index') }}">
-
-            <input type="text" name="busqueda" placeholder="Buscar producto..." value="{{ busqueda }}">
-
+        <form id="formulario-busqueda" class="buscador" method="GET" action="{{ url_for('index') }}"
+            onsubmit="event.preventDefault()">
+            <input type="text" id="input-busqueda" name="busqueda" placeholder="Buscar producto..."
+                value="{{ busqueda }}">
             <button type="submit">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
@@ -70,8 +70,7 @@
 
     <main class="contenedor">
         <h1> NUESTROS PRODUCTOS </h1>
-        <div class="grid">
-
+        <div class="grid" id="contenedor-productos">
             {% for producto in productos %}
             <div class="producto">
                 <a href="#"> <img class="producto__imagen" src="{{ url_for('static', filename=producto.imagen) }}"
@@ -99,6 +98,77 @@
     <footer class="footer">
         <p class="footer__texto"> © SYSTEM1% - Todos los derechos reservados 2026</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputBusqueda = document.getElementById('input-busqueda');
+            const contenedorProductos = document.getElementById('contenedor-productos');
+
+            let temporizadorDebounce;
+
+            if (inputBusqueda && contenedorProductos) {
+                inputBusqueda.addEventListener('input', function () {
+                    const textoBusqueda = this.value;
+
+                    // Limpiamos el temporizador previo si el usuario sigue escribiendo
+                    clearTimeout(temporizadorDebounce);
+
+                    // Esperamos 300 milisegundos de pausa en la escritura antes de consultar al servidor
+                    temporizadorDebounce = setTimeout(() => {
+
+                        // Consumimos nuestra ruta de Flask usando Fetch API
+                        fetch(`/buscar_ajax?busqueda=${encodeURIComponent(textoBusqueda)}`)
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Error en la respuesta del servidor');
+                                }
+                                return response.json();
+                            })
+                            .then(productos => {
+                                // Limpiamos la cuadrícula de productos actual
+                                contenedorProductos.innerHTML = '';
+
+                                // Si la búsqueda no arrojó resultados
+                                if (productos.length === 0) {
+                                    contenedorProductos.innerHTML = `
+                                <div style="grid-column: 1 / -1; text-align: center; padding: 50px 0;">
+                                    <p style="color: var(--blanco); font-size: 20px;">No se encontraron productos que coincidan con tu búsqueda.</p>
+                                </div>
+                            `;
+                                    return;
+                                }
+
+                                // Volvemos a construir las tarjetas de productos dinámicamente
+                                productos.forEach(producto => {
+                                    const tarjetaHTML = `
+                                <div class="producto">
+                                    <a href="#"> 
+                                        <img class="producto__imagen" src="/static/${producto.imagen}" alt="Imagen de ${producto.nombre}">
+                                    </a>
+                                    <div class="producto__informacion">
+                                        <a href="#">
+                                            <p class="producto__nombre">${producto.nombre}</p>
+                                        </a>
+                                        <p class="producto__precio">$${producto.precioActual}</p>
+                                        <a href="/agregar/${producto.id}" class="btn-agregar">
+                                            AGREGAR AL CARRITO
+                                        </a>
+                                    </div>
+                                </div>
+                            `;
+                                    // Insertamos el nuevo nodo HTML dentro de la cuadrícula
+                                    contenedorProductos.insertAdjacentHTML('beforeend', tarjetaHTML);
+                                });
+                            })
+                            .catch(error => {
+                                console.error('Hubo un problema con la Fetch API:', error);
+                            });
+
+                    }, 300);
+                });
+            }
+        });
+    </script>
 
 </body>
 

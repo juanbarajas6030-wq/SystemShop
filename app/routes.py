@@ -214,3 +214,43 @@ def logout():
     session.pop('usuario', None)
 
     return redirect(url_for('logIn'))
+
+from flask import jsonify # Asegúrate de tener importado jsonify al inicio de tu archivo
+
+@app.route('/buscar_ajax', methods=['GET'])
+def buscar_ajax():
+    busqueda = request.args.get('busqueda', '')
+    
+    conn = get_connection()
+    cursor = conn.cursor()
+    
+    if busqueda:
+        # Buscamos coincidencias parciales con LIKE
+        query = """
+            SELECT id, imagen, nombre, precioActual
+            FROM sistemas
+            WHERE nombre LIKE %s
+        """
+        cursor.execute(query, ('%' + busqueda + '%',))
+    else:
+        # Si el buscador se vacía, devolvemos todos los productos de nuevo
+        cursor.execute("""
+            SELECT id, imagen, nombre, precioActual
+            FROM sistemas
+        """)
+        
+    productos_db = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    
+    # Mapeamos los resultados a una lista de diccionarios común para poder serializar a JSON
+    lista_productos = []
+    for p in productos_db:
+        lista_productos.append({
+            'id': p['id'],
+            'imagen': p['imagen'],
+            'nombre': p['nombre'],
+            'precioActual': p['precioActual']
+        })
+        
+    return jsonify(lista_productos)
