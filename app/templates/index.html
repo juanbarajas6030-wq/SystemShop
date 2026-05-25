@@ -90,7 +90,7 @@
             </div>
             {% endfor %}
 
-            <div class="grafico grafico--camisas"></div>
+            <div class="grafico grafico--sistemas"></div>
         </div>
 
     </main>
@@ -106,39 +106,27 @@
 
             let temporizadorDebounce;
 
+            //FETCH Busqueda
             if (inputBusqueda && contenedorProductos) {
                 inputBusqueda.addEventListener('input', function () {
                     const textoBusqueda = this.value;
-
-                    // Limpiamos el temporizador previo si el usuario sigue escribiendo
                     clearTimeout(temporizadorDebounce);
 
-                    // Esperamos 300 milisegundos de pausa en la escritura antes de consultar al servidor
                     temporizadorDebounce = setTimeout(() => {
-
-                        // Consumimos nuestra ruta de Flask usando Fetch API
                         fetch(`/buscar_ajax?busqueda=${encodeURIComponent(textoBusqueda)}`)
-                            .then(response => {
-                                if (!response.ok) {
-                                    throw new Error('Error en la respuesta del servidor');
-                                }
-                                return response.json();
-                            })
+                            .then(response => response.json())
                             .then(productos => {
-                                // Limpiamos la cuadrícula de productos actual
                                 contenedorProductos.innerHTML = '';
 
-                                // Si la búsqueda no arrojó resultados
                                 if (productos.length === 0) {
                                     contenedorProductos.innerHTML = `
                                 <div style="grid-column: 1 / -1; text-align: center; padding: 50px 0;">
-                                    <p style="color: var(--blanco); font-size: 20px;">No se encontraron productos que coincidan con tu búsqueda.</p>
+                                    <p style="color: var(--blanco); font-size: 20px;">No se encontraron productos.</p>
                                 </div>
                             `;
                                     return;
                                 }
 
-                                // Volvemos a construir las tarjetas de productos dinámicamente
                                 productos.forEach(producto => {
                                     const tarjetaHTML = `
                                 <div class="producto">
@@ -156,17 +144,57 @@
                                     </div>
                                 </div>
                             `;
-                                    // Insertamos el nuevo nodo HTML dentro de la cuadrícula
                                     contenedorProductos.insertAdjacentHTML('beforeend', tarjetaHTML);
                                 });
                             })
-                            .catch(error => {
-                                console.error('Hubo un problema con la Fetch API:', error);
-                            });
-
+                            .catch(error => console.error('Error en la búsqueda:', error));
                     }, 300);
                 });
             }
+
+            //FETCH Agregar carrito
+            document.addEventListener('click', function (event) {
+                // Verificamos si el elemento clickeado es el botón de agregar al carrito
+                if (event.target && event.target.classList.contains('btn-agregar')) {
+                    event.preventDefault(); // Evitamos que la página se recargue o navegue
+
+                    const urlAgregar = event.target.getAttribute('href');
+
+                    // Hacemos la petición en segundo plano a Flask
+                    fetch(urlAgregar)
+                        .then(response => {
+                            if (!response.ok) throw new Error('Error al agregar el producto');
+                            return response.json();
+                        })
+                        .then(data => {
+                            if (data.success) {
+                                // Buscamos si ya existe el contenedor de la burbuja del carrito
+                                const contenedorCarrito = document.querySelector('.contenedor-icono-carrito');
+                                let contador = document.querySelector('.contador-carrito');
+
+                                // Si la burbuja no existía (carrito estaba en 0), la creamos dinámicamente
+                                if (!contador && contenedorCarrito) {
+                                    contador = document.createElement('span');
+                                    contador.className = 'contador-carrito';
+                                    contenedorCarrito.appendChild(contador);
+                                }
+
+                                // Actualizamos el número con el dato que nos envió Flask
+                                if (contador) {
+                                    contador.textContent = data.nueva_cantidad;
+
+                                    // Efecto visual opcional: hace que la burbuja salte brevemente al agregar
+                                    contador.style.transform = 'scale(1.3)';
+                                    contador.style.transition = 'transform 0.1s ease';
+                                    setTimeout(() => {
+                                        contador.style.transform = 'scale(1)';
+                                    }, 100);
+                                }
+                            }
+                        })
+                        .catch(error => console.error('Error con Fetch API en el carrito:', error));
+                }
+            });
         });
     </script>
 

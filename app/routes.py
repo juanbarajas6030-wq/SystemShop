@@ -73,7 +73,11 @@ def agregar_carrito(producto_id):
     carrito.append(producto)
     session['carrito'] = carrito
 
-    return redirect(url_for('index'))
+    cantidad_actual = len(carrito)
+    return jsonify({
+        'success': True,
+        'nueva_cantidad': cantidad_actual
+    })
 
 @app.route('/eliminar/<int:indice>')
 def eliminar_carrito(indice):
