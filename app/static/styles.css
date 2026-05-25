@@ -460,43 +460,114 @@ li {
 
 /* RESPONSIVE */
 
-/* TABLETS Y PANTALLAS MEDIANAS (Hasta 992px) */
 @media (max-width: 992px) {
-    .grid { grid-template-columns: repeat(2, 1fr); } /* Pasa a 2 columnas */
-    .informacion { grid-template-columns: repeat(2, 1fr); }
+    .grid { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
     
-    /* En tablet de 2 columnas, hacemos que el gráfico ocupe todo el ancho de la fila */
-    .grafico { grid-column: 1 / -1; } 
+    .informacion { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    
+    /* El gráfico ocupa las 2 columnas disponibles */
+    .grafico { 
+        grid-column: 1 / -1; 
+    } 
 }
 
-/* DISPOSITIVOS MÓVILES GRANDES (Hasta 768px) */
 @media (max-width: 768px) {
-    .header { flex-direction: column; gap: 15px; padding: 20px; }
-    .buscador { width: 100%; }
-    .buscador input { width: 100%; }
-    .navegacion { flex-wrap: wrap; justify-content: center; }
-
-    .nosotros { flex-direction: column; text-align: center; }
-    .contacto__contenedor { grid-template-columns: 1fr; }
-
-    .text { flex-direction: column; text-align: center; gap: 15px; }
-    .btn-eliminar { margin-left: 0; margin-top: 10px; }
+    /* Header y Navegación */
+    .header { 
+        flex-direction: column; 
+        gap: 20px; 
+        padding: 20px 10px; 
+    }
     
-    .carrito-acciones { flex-direction: column; gap: 20px; text-align: center; }
-    .carrito-acciones-derecha { flex-direction: column; width: 100%; }
+    .buscador { 
+        width: 100%; 
+    }
+    
+    .buscador input { 
+        width: 100%; 
+    }
+    
+    .navegacion { 
+        flex-wrap: wrap; 
+        justify-content: center; 
+        gap: 15px;
+    }
+
+    /* Página: Nosotros */
+    .nosotros { 
+        flex-direction: column; 
+        text-align: center; 
+    }
+
+    /* Página: Contacto (Ajuste Crítico) */
+    .contacto__contenedor { 
+        grid-template-columns: 1fr; 
+        gap: 20px;
+    }
+    
+    .contacto__info, 
+    .contacto__formulario {
+        padding: 20px;
+    }
+
+    /* Carrito de Compras */
+    .text { 
+        flex-direction: column; 
+        text-align: center; 
+        gap: 15px; 
+    }
+    
+    .btn-eliminar { 
+        margin-left: 0; 
+        margin-top: 10px; 
+    }
+    
+    .carrito-acciones { 
+        flex-direction: column; 
+        gap: 20px; 
+        text-align: center; 
+    }
+    
+    .carrito-acciones-derecha { 
+        flex-direction: column; 
+        width: 100%; 
+        gap: 10px;
+    }
 }
 
-/* CELULARES PEQUEÑOS (Hasta 480px) */
 @media (max-width: 480px) {
-    .grid { grid-template-columns: 1fr; } /* 1 sola columna */
-    .informacion { grid-template-columns: 1fr; }
+    /* Grid de una sola fila */
+    .grid { 
+        grid-template-columns: 1fr; 
+    }
     
-    /* En celular de 1 columna, el gráfico se adapta de forma natural */
-    .grafico { grid-column: 1 / -1; min-height: 350px; } /* Reducimos un poco la altura en celulares para que no scroleen tanto */
+    .informacion { 
+        grid-template-columns: 1fr; 
+    }
     
-    .producto__nombre { font-size: 32px; }
-    .contenedorLogIn { width: 90%; padding: 20px; }
+    /* Gráfico con altura reducida para no ocupar toda la pantalla */
+    .grafico { 
+        grid-column: 1 / -1; 
+        min-height: 300px; 
+    } 
     
-    h1 { font-size: 30px; }
-    h2 { font-size: 26px; }
+    /* Tipografías adaptadas */
+    h1 { font-size: 28px; }
+    h2 { font-size: 24px; }
+    .producto__nombre { font-size: 30px; }
+    
+    /* Login y Registro */
+    .contenedorLogIn { 
+        width: 95%; 
+        padding: 20px 15px; 
+    }
+    
+    .contacto__formulario input,
+    .contacto__formulario textarea {
+        font-size: 16px;
+    }
 }
